@@ -21,7 +21,7 @@ import java.util.UUID;
 @Entity
 @Table(name = "department")
 public class Department {
-    @Id
+    @Id      // khóa chính 1 cột
     @Column(name = "id")
     @GenericGenerator(
             name = "department_id_generator",
