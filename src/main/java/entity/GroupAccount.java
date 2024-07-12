@@ -12,9 +12,13 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @Table(name = "group_account")
+@IdClass(value = GroupAccount.PrimaryKey.class)
 public class GroupAccount {
-    @EmbeddedId
-    private PrimaryKey pk;
+    @Id
+    private int groupId;
+
+    @Id
+    private int accountId;
 
     @Column(name = "joined_date", nullable = false, updatable = false)
     @CreationTimestamp
