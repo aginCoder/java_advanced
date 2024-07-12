@@ -1,0 +1,233 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (mmap) failed to map 132120576 bytes. Error detail: G1 virtual space
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   This process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (os_windows.cpp:3603), pid=8988, tid=15528
+#
+# JRE version:  (21.0.3+9) (build )
+# Java VM: OpenJDK 64-Bit Server VM (21.0.3+9-LTS, mixed mode, sharing, tiered, compressed oops, compressed class ptrs, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: -javaagent:C:\Users\HOME\IntelliJ IDEA Community Edition 2024.1.1\lib\idea_rt.jar=55573:C:\Users\HOME\IntelliJ IDEA Community Edition 2024.1.1\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 Program
+
+Host: Intel(R) Core(TM) i5-10300H CPU @ 2.50GHz, 8 cores, 7G,  Windows 11 , 64 bit Build 22621 (10.0.22621.3672)
+Time: Fri Jul 12 19:17:59 2024 SE Asia Standard Time elapsed time: 0.022227 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000021dfa3f5290):  JavaThread "Unknown thread" [_thread_in_vm, id=15528, stack(0x000000cefd000000,0x000000cefd100000) (1024K)]
+
+Stack: [0x000000cefd000000,0x000000cefd100000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x6d3919]
+V  [jvm.dll+0x8ae6d1]
+V  [jvm.dll+0x8b0a3e]
+V  [jvm.dll+0x8b1123]
+V  [jvm.dll+0x286316]
+V  [jvm.dll+0x6cfff5]
+V  [jvm.dll+0x6c49ea]
+V  [jvm.dll+0x35b7da]
+V  [jvm.dll+0x3633b6]
+V  [jvm.dll+0x3b4b4e]
+V  [jvm.dll+0x3b4df8]
+V  [jvm.dll+0x32f12c]
+V  [jvm.dll+0x32fcbb]
+V  [jvm.dll+0x876979]
+V  [jvm.dll+0x3c1ed1]
+V  [jvm.dll+0x85fc08]
+V  [jvm.dll+0x4560be]
+V  [jvm.dll+0x457c21]
+C  [jli.dll+0x5343]
+C  [ucrtbase.dll+0x29333]
+C  [KERNEL32.DLL+0x1257d]
+C  [ntdll.dll+0x5af28]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x00007ff8f55df108, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+Total: 0
+
+Other Threads:
+  0x0000021dfc6a1310 WorkerThread "GC Thread#0"                     [id=10548, stack(0x000000cefd100000,0x000000cefd200000) (1024K)]
+  0x0000021dfc6b1fb0 ConcurrentGCThread "G1 Main Marker"            [id=17852, stack(0x000000cefd200000,0x000000cefd300000) (1024K)]
+  0x0000021dfc6b3260 WorkerThread "G1 Conc#0"                       [id=2424, stack(0x000000cefd300000,0x000000cefd400000) (1024K)]
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff8f4ce22b7]
+VM state: not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread:  ([mutex/lock_event])
+[0x00007ff8f5653a48] Heap_lock - owner thread: 0x0000021dfa3f5290
+
+Heap address: 0x0000000082800000, size: 2008 MB, Compressed Oops mode: 32-bit
+
+CDS archive(s) mapped at: [0x0000000000000000-0x0000000000000000-0x0000000000000000), size 0, SharedBaseAddress: 0x0000000800000000, ArchiveRelocationMode: 1.
+Narrow klass base: 0x0000000000000000, Narrow klass shift: 0, Narrow klass range: 0x0
+
+GC Precious Log:
+ CardTable entry size: 512
+ Card Set container configuration: InlinePtr #cards 5 size 8 Array Of Cards #cards 12 size 40 Howl #buckets 4 coarsen threshold 1843 Howl Bitmap #cards 512 size 80 coarsen threshold 460 Card regions per heap region 1 cards per card region 2048
+
+Heap:
+ garbage-first heap   total 0K, used 0K [0x0000000082800000, 0x0000000100000000)
+  region size 1024K, 0 young (0K), 0 survivors (0K)
+
+[error occurred during error reporting (printing heap information), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ff8f50cd1c9]
+GC Heap History (0 events):
+No events
+
+Dll operation events (1 events):
+Event: 0.017 Loaded shared library C:\Users\HOME\.jdks\azul-21.0.3\bin\java.dll
+
+Deoptimization events (0 events):
+No events
+
+Classes loaded (0 events):
+No events
+
+Classes unloaded (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+ZGC Phase Switch (0 events):
+No events
+
+VM Operations (0 events):
+No events
+
+Events (0 events):
+No events
+
+
+Dynamic libraries:
+0x00007ff770960000 - 0x00007ff77096e000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\java.exe
+0x00007ff96cbb0000 - 0x00007ff96cdc7000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ff96b960000 - 0x00007ff96ba24000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ff96a180000 - 0x00007ff96a52c000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ff969fb0000 - 0x00007ff96a0c1000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ff966d60000 - 0x00007ff966d7b000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\VCRUNTIME140.dll
+0x00007ff966d40000 - 0x00007ff966d59000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\jli.dll
+0x00007ff96c370000 - 0x00007ff96c51e000 	C:\WINDOWS\System32\USER32.dll
+0x00007ff96a150000 - 0x00007ff96a176000 	C:\WINDOWS\System32\win32u.dll
+0x00007ff950cc0000 - 0x00007ff950f53000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955\COMCTL32.dll
+0x00007ff96bcc0000 - 0x00007ff96bce9000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ff96c520000 - 0x00007ff96c5c7000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ff96a660000 - 0x00007ff96a779000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ff969f10000 - 0x00007ff969faa000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ff96bae0000 - 0x00007ff96bb11000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ff9668d0000 - 0x00007ff9668dc000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\vcruntime140_1.dll
+0x00007ff957fb0000 - 0x00007ff95803e000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\msvcp140.dll
+0x00007ff8f49a0000 - 0x00007ff8f5734000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\server\jvm.dll
+0x00007ff96b250000 - 0x00007ff96b302000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ff96ba30000 - 0x00007ff96bada000 	C:\WINDOWS\System32\sechost.dll
+0x00007ff969ee0000 - 0x00007ff969f08000 	C:\WINDOWS\System32\bcrypt.dll
+0x00007ff96c200000 - 0x00007ff96c315000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ff96cad0000 - 0x00007ff96cb41000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ff964d50000 - 0x00007ff964d84000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ff9663f0000 - 0x00007ff9663fa000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ff968d70000 - 0x00007ff968dbd000 	C:\WINDOWS\SYSTEM32\POWRPROF.dll
+0x00007ff968d50000 - 0x00007ff968d63000 	C:\WINDOWS\SYSTEM32\UMPDC.dll
+0x00007ff969000000 - 0x00007ff969018000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ff9668a0000 - 0x00007ff9668aa000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\jimage.dll
+0x00007ff967840000 - 0x00007ff967a72000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ff96b310000 - 0x00007ff96b698000 	C:\WINDOWS\System32\combase.dll
+0x00007ff96bea0000 - 0x00007ff96bf77000 	C:\WINDOWS\System32\OLEAUT32.dll
+0x00007ff946e60000 - 0x00007ff946e92000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ff96a0d0000 - 0x00007ff96a14b000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ff965df0000 - 0x00007ff965dff000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\instrument.dll
+0x00007ff964f60000 - 0x00007ff964f7f000 	C:\Users\HOME\.jdks\azul-21.0.3\bin\java.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Users\HOME\.jdks\azul-21.0.3\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.22621.3672_none_2713b9d173822955;C:\Users\HOME\.jdks\azul-21.0.3\bin\server
+
+VM Arguments:
+jvm_args: -javaagent:C:\Users\HOME\IntelliJ IDEA Community Edition 2024.1.1\lib\idea_rt.jar=55573:C:\Users\HOME\IntelliJ IDEA Community Edition 2024.1.1\bin -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 
+java_command: Program
+java_class_path (initial): D:\VTI\Railway85\Java Advanced\Poject_demo\target\classes;C:\Users\HOME\.m2\repository\com\mysql\mysql-connector-j\9.0.0\mysql-connector-j-9.0.0.jar;C:\Users\HOME\.m2\repository\com\google\protobuf\protobuf-java\4.26.1\protobuf-java-4.26.1.jar;C:\Users\HOME\.m2\repository\org\hibernate\orm\hibernate-core\6.5.2.Final\hibernate-core-6.5.2.Final.jar;C:\Users\HOME\.m2\repository\jakarta\persistence\jakarta.persistence-api\3.1.0\jakarta.persistence-api-3.1.0.jar;C:\Users\HOME\.m2\repository\jakarta\transaction\jakarta.transaction-api\2.0.1\jakarta.transaction-api-2.0.1.jar;C:\Users\HOME\.m2\repository\org\jboss\logging\jboss-logging\3.5.0.Final\jboss-logging-3.5.0.Final.jar;C:\Users\HOME\.m2\repository\org\hibernate\common\hibernate-commons-annotations\6.0.6.Final\hibernate-commons-annotations-6.0.6.Final.jar;C:\Users\HOME\.m2\repository\io\smallrye\jandex\3.1.2\jandex-3.1.2.jar;C:\Users\HOME\.m2\repository\com\fasterxml\classmate\1.5.1\classmate-1.5.1.jar;C:\Users\HOME\.m2\repository\net\bytebuddy\byte-buddy\1.14.15\byte-buddy-1.14.15.jar;C:\Users\HOME\.m2\repository\jakarta\xml\bind\jakarta.xml.bind-api\4.0.0\jakarta.xml.bind-api-4.0.0.jar;C:\Users\HOME\.m2\repository\jakarta\activation\jakarta.activation-api\2.1.0\jakarta.activation-api-2.1.0.jar;C:\Users\HOME\.m2\repository\org\glassfish\jaxb\jaxb-runtime\4.0.2\jaxb-runtime-4.0.2.jar;C:\Users\HOME\.m2\repository\org\glassfish\jaxb\jaxb-core\4.0.2\jaxb-core-4.0.2.jar;C:\Users\HOME\.m2\repository\org\eclipse\angus\angus-activation\2.0.0\angus-activation-2.0.0.jar;C:\Users\HOME\.m2\repository\org\glassfish\jaxb\txw2\4.0.2\txw2-4.0.2.jar;C:\Users\HOME\.m2\repository\com\sun\istack\istack-commons-runtime\4.1.1\istack-commons-runtime-4.1.1.jar;C:\Users\HOME\.m2\repository\jakarta\inject\jakarta.inject-api\2.0.1\jakarta.inject-api-2.0.1.jar;C:\Users\HOME\.m2\repository\org\antlr\antlr4-runtime\4.13.0\antlr4-runtime-4.13.0.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint ConcGCThreads                            = 2                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 132120576                                 {product} {ergonomic}
+   size_t MarkStackSize                            = 4194304                                   {product} {ergonomic}
+   size_t MaxHeapSize                              = 2105540608                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+   size_t MinHeapSize                              = 8388608                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5839372                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122909434                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122909434                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+   size_t SoftMaxHeapSize                          = 2105540608                             {manageable} {ergonomic}
+     bool UseCompressedOops                        = true                           {product lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags foldmultilines=false
+ #1: stderr all=off uptime,level,tags foldmultilines=false
+
+Environment Variables:
+PATH=C:\Program Files (x86)\VMware\VMware Workstation\bin\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\TDM-GCC-64\bin;D:\PHAN MEM\bin;C:\Program Files\nodejs\;D:\Java\Git\cmd;D:\laragon\bin\php\php_8.2;C:\Users\HOME\AppData\Local\Yarn\config\global\node_modules\.bin;C:\Users\HOME\AppData\Roaming\Composer\vendor\bin;C:\Users\HOME\AppData\Roaming\npm;D:\laragon\bin;D:\laragon\bin\apache\httpd-2.4.54-win64-VS16\bin;D:\laragon\bin\composer;D:\laragon\bin\git\bin;D:\laragon\bin\git\cmd;D:\laragon\bin\git\mingw64\bin;D:\laragon\bin\git\usr\bin;D:\laragon\bin\laragon\utils;D:\laragon\bin\mysql\mysql-8.0.30-winx64\bin;D:\laragon\bin\nginx\nginx-1.22.0;D:\laragon\bin\ngrok;D:\laragon\bin\nodejs\node-v18;D:\laragon\bin\notepad++;D:\laragon\bin\php\php_8.2;D:\laragon\bin\python\python-3.10;D:\laragon\bin\python\python-3.10\Scripts;D:\laragon\bin\redis\redis-x64-5.0.14.1;D:\laragon\bin\telnet;D:\laragon\usr\bin;C:\Users\HOME\AppData\Local\Microsoft\WindowsApps;C:\Users\HOME\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\JetBrains\IntelliJ IDEA Community Edition 2023.3.1\bin;C:\Users\HOME\AppData\Local\ComposerSetup\bin;
+USERNAME=HOME
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 165 Stepping 2, GenuineIntel
+TMP=C:\Users\HOME\AppData\Local\Temp
+TEMP=C:\Users\HOME\AppData\Local\Temp
+
+
+
+
+Periodic native trim disabled
+
+---------------  S Y S T E M  ---------------
+
+OS:
+ Windows 11 , 64 bit Build 22621 (10.0.22621.3672)
+OS uptime: 0 days 5:50 hours
+
+CPU: total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 165 stepping 2 microcode 0xe0, cx8, cmov, fxsr, ht, mmx, 3dnowpref, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, lzcnt, tsc, tscinvbit, avx, avx2, aes, erms, clmul, bmi1, bmi2, adx, fma, vzeroupper, clflush, clflushopt, rdtscp, f16c, pku
+Processor Information for all 8 processors :
+  Max Mhz: 2496, Current Mhz: 2496, Mhz Limit: 2496
+
+Memory: 4k page, system-wide physical 8029M (632M free)
+TotalPageFile size 12125M (AvailPageFile size 115M)
+current process WorkingSet (physical memory assigned to process): 11M, peak: 11M
+current process commit charge ("private bytes"): 60M, peak: 186M
+
+vm_info: OpenJDK 64-Bit Server VM (21.0.3+9-LTS) for windows-amd64 JRE (21.0.3+9-LTS) (Zulu21.34+19-CA), built on 2024-04-09T07:26:03Z by "zulu_re" with MS VC++ 17.1 (VS2022)
+
+END.
