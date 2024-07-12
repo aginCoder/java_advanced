@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
-@ToString        // in ra thông tin cho đươn giản hơn
+@ToString        // in ra thông tin cho đơn giản hơn
 @Entity
 @Table(name = "department")
 public class Department {

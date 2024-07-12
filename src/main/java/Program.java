@@ -9,6 +9,7 @@ public class Program {
                 department.setName("Giám đốc");
                 session.persist(department);
             });
+
             factory.inSession(session -> {
                 var department = new Department();
                 department.setName("Bảo vệ");
@@ -50,6 +51,7 @@ public class Program {
                 var department = session.get(Department.class, 1);
                 session.remove(department);
             });
+
         }
     }
 }
