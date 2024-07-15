@@ -2,6 +2,7 @@ package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -25,6 +26,6 @@ public class Group {
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "group")
+    @OneToMany(mappedBy = "group", fetch = FetchType.EAGER)
     private List<GroupAccount> groupAccounts;
 }
