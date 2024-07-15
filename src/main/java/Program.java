@@ -29,6 +29,17 @@ public class Program {
                         System.out.println("✨ group = " + account.getGroup().getName());
                     }
                 });
+
+            factory.inSession(session -> {
+                var hql = "FROM Group";
+                var groups = session
+                        .createSelectionQuery(hql, Group.class)
+                        .getResultList();
+                for (var group : groups) {
+                    System.out.println("👉 group = " + group.getName());
+                    System.out.println("✨ account = " + group.getAccount().getName());
+                }
+            });
             }
         }
     }

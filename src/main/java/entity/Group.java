@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.nio.file.Path;
+
 @Getter
 @Setter
 @Entity
@@ -16,4 +18,5 @@ public class Group {
 
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
+
 }
