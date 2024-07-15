@@ -17,12 +17,12 @@ public class Program {
 
                 var account1 = new Account();
                 account1.setName("Ân");
-                account1.setEmail("long@gmail.com");
+                account1.setEmail("an@gmail.com");
                 session.persist(account1);
 
                 var account2 = new Account();
                 account2.setName("Vi");
-                account2.setEmail("thao@gmail.com");
+                account2.setEmail("vi@gmail.com");
                 session.persist(account2);
 
                 var groupAccount1 = new GroupAccount();
