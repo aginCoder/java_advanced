@@ -18,7 +18,7 @@ public class HibernateUtil {
                 .addAnnotatedClass(GroupAccount.class)
                 .setProperty(AvailableSettings.URL, url)
                 .setProperty(AvailableSettings.USER, "root")
-                .setProperty(AvailableSettings.PASS, "root")
+                .setProperty(AvailableSettings.PASS, "")
                 .setProperty(AvailableSettings.GLOBALLY_QUOTED_IDENTIFIERS, "true")
                 .setProperty(AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS, "true")
                 .setProperty(AvailableSettings.HBM2DDL_AUTO, "create")
