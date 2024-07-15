@@ -17,7 +17,7 @@ public class Program {
                         account.setEmail("an@gmail.com");
                         account.setGroup(group);
                         session.persist(account);
-                    }
+                    });
 
                 factory.inSession(session -> {
                     var hql = "FROM Account";
@@ -30,16 +30,16 @@ public class Program {
                     }
                 });
 
-            factory.inSession(session -> {
-                var hql = "FROM Group";
-                var groups = session
-                        .createSelectionQuery(hql, Group.class)
-                        .getResultList();
-                for (var group : groups) {
-                    System.out.println("👉 group = " + group.getName());
-                    System.out.println("✨ account = " + group.getAccount().getName());
-                }
-            });
+                factory.inSession(session -> {
+                    var hql = "FROM Group";
+                    var groups = session
+                            .createSelectionQuery(hql, Group.class)
+                            .getResultList();
+                    for (var group : groups) {
+                        System.out.println("👉 group = " + group.getName());
+                        System.out.println("✨ account = " + group.getAccount().getName());
+                    }
+                });
             }
         }
     }
