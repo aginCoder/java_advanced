@@ -33,5 +33,8 @@ public class GroupAccount {
 
         @Column(name = "account_id", nullable = false)
         private int accountId;
+
+        @OneToOne(mappedBy = "group")
+        private Account account;
     }
 }

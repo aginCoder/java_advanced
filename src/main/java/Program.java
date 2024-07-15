@@ -1,4 +1,6 @@
+import entity.Account;
 import entity.Department;
+import entity.Group;
 import entity.GroupAccount;
 import util.HibernateUtil;
 
@@ -6,27 +8,27 @@ public class Program {
     public static void main(String[] args) {
         try (var factory = HibernateUtil.buiSessionFactory()){
             factory.inTransaction(session -> {
-                var groupAccount = new GroupAccount();
-                groupAccount.setGroupId(1);
-                groupAccount.setAccountId(4);
-                session.persist(groupAccount);
-            });
-            factory.inTransaction(session -> {
-                var groupAccount = new GroupAccount();
-                groupAccount.setGroupId(7);
-                groupAccount.setAccountId(9);
-                session.persist(groupAccount);
-            });
+                        var group = new Group();
+                        group.setName("Hibernate");
+                        session.persist(group);
 
-            factory.inSession(session -> {
-                var hql = "FROM GroupAccount";
-                var groupAccounts = session
-                        .createSelectionQuery(hql, GroupAccount.class)
-                        .getResultList();
-                for (var groupAccount :groupAccounts){
-                    System.out.println("groupAccount = " + groupAccount);
-                }
-            });
+                        var account = new Account();
+                        account.setName("Ân");
+                        account.setEmail("an@gmail.com");
+                        account.setGroup(group);
+                        session.persist(account);
+                    }
+
+                factory.inSession(session -> {
+                    var hql = "FROM Account";
+                    var accounts = session
+                            .createSelectionQuery(hql, Account.class)
+                            .getResultList();
+                    for (var account : accounts) {
+                        System.out.println("👉 account = " + account.getName());
+                        System.out.println("✨ group = " + account.getGroup().getName());
+                    }
+                });
+            }
         }
     }
-}
