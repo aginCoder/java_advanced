@@ -19,4 +19,5 @@ public class Group {
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
 
+    private Account account;
 }
