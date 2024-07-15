@@ -1,6 +1,13 @@
 package entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,13 +27,12 @@ public class Account {
     @Column(name = "email", length = 50, unique = true, nullable = false)
     private String email;
 
-    @OneToOne     // mqh 1-1
+    @OneToOne
     @JoinColumn(
-            // cấu hình khóa ngoại
             name = "group_id",
             referencedColumnName = "id",
             unique = true,
-            updatable = false
+            nullable = false
     )
     private Group group;
 }

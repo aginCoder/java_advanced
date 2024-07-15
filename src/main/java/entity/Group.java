@@ -1,10 +1,14 @@
 package entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.nio.file.Path;
 
 @Getter
 @Setter
@@ -19,5 +23,6 @@ public class Group {
     @Column(name = "name", length = 50, unique = true, nullable = false)
     private String name;
 
+    @OneToOne(mappedBy = "group")
     private Account account;
 }

@@ -2,16 +2,19 @@ package util;
 
 import entity.Account;
 import entity.Department;
+import entity.Group;
 import entity.GroupAccount;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
-    public  static SessionFactory buiSessionFactory(){
+    public static SessionFactory buildSessionFactory() {
         var url = "jdbc:mysql://localhost:3306/lesson_03?createDatabaseIfNotExist=true";
         var configuration = new Configuration()
+                .addAnnotatedClass(Group.class)
                 .addAnnotatedClass(Account.class)
+                .addAnnotatedClass(Department.class)
                 .addAnnotatedClass(GroupAccount.class)
                 .setProperty(AvailableSettings.URL, url)
                 .setProperty(AvailableSettings.USER, "root")
