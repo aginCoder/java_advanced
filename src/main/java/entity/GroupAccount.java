@@ -2,51 +2,32 @@ package entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Embeddable;
-import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.MapsId;
+import jakarta.persistence.IdClass;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Getter
 @Setter
 @Entity
-@Table(name = "group_account")
+@Table(name = "ga")
+@IdClass(value = GroupAccount.PrimaryKey.class)
 public class GroupAccount {
-    @EmbeddedId
-    private PrimaryKey pk;
+    @Id
+    private int groupId;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "group_id",
-            referencedColumnName = "id",
-            nullable = false
-    )
-    @MapsId("group_id")
-    private Group group;
+    @Id
+    private int accountId;
 
-    @ManyToOne
-    @JoinColumn(
-            name = "account_id",
-            referencedColumnName = "id",
-            nullable = false
-    )
-    @MapsId("account_id")
-    private Account account;
-
-    @Column(name = "joined_at", nullable = false, updatable = false)
+    @Column(name = "joined_date", nullable = false, updatable = false)
     @CreationTimestamp
-    private LocalDateTime joinedAt;
+    private LocalDate joinedDate;
 
     @Getter
     @Setter

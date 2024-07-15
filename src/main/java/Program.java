@@ -1,7 +1,8 @@
 import entity.Account;
 import entity.Group;
-import entity.GroupAccount;
 import util.HibernateUtil;
+
+import java.util.Arrays;
 
 public class Program {
     public static void main(String[] args) {
@@ -25,19 +26,13 @@ public class Program {
                 account2.setEmail("thao@gmail.com");
                 session.persist(account2);
 
-                var groupAccount1 = new GroupAccount();
-                var pk1 = new GroupAccount.PrimaryKey();
-                pk1.setGroupId(1);
-                pk1.setAccountId(1);
-                groupAccount1.setPk(pk1);
-                session.persist(groupAccount1);
+                account1.setGroups(Arrays.asList(group1, group2));
+                account2.setGroups(Arrays.asList(group1, group2));
+                group1.setAccounts(Arrays.asList(account1, account2));
+                group2.setAccounts(Arrays.asList(account1, account2));
 
-                var groupAccount2 = new GroupAccount();
-                var pk2 = new GroupAccount.PrimaryKey();
-                pk2.setGroupId(1);
-                pk2.setAccountId(2);
-                groupAccount2.setPk(pk2);
-                session.persist(groupAccount2);
+                session.persist(group1);
+                session.persist(group2);
             });
 
             factory.inSession(session -> {
@@ -47,10 +42,9 @@ public class Program {
                         .getResultList();
                 for (var group : groups) {
                     System.out.println("👉 group = " + group.getName());
-                    var groupAccounts = group.getGroupAccounts();
-                    for (var groupAccount : groupAccounts) {
-                        System.out.println("✨ account = " + groupAccount.getAccount().getName());
-                        System.out.println("✨ joined at = " + groupAccount.getJoinedAt());
+                    var accounts = group.getAccounts();
+                    for (var account : accounts) {
+                        System.out.println("✨ account = " + account.getName());
                     }
                 }
             });

@@ -5,7 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
@@ -28,6 +28,6 @@ public class Account {
     @Column(name = "email", length = 50, unique = true, nullable = false)
     private String email;
 
-    @OneToMany(mappedBy = "account")
-    private List<GroupAccount> groupAccounts;
+    @ManyToMany(mappedBy = "accounts")
+    private List<Group> groups;
 }
