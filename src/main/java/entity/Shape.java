@@ -8,8 +8,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @Table(name = "shape")
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@DiscriminatorColumn(name = "type")
+@Inheritance(strategy = InheritanceType.TABLE_PER-CLASS)
 public class Shape {
     @Id
     @Column(name = "id")

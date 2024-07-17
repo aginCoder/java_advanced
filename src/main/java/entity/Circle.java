@@ -9,7 +9,10 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@DiscriminatorValue("circle")
+@Table(name = "circle")
+@AttributeOverrides({
+
+})
 public class Circle extends Shape{
     @Column(name = "radius")
     private int radius;
