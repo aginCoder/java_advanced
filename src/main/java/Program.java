@@ -8,31 +8,7 @@ public class Program {
     public static void main(String[] args) {
         try (var factory = HibernateUtil.buildSessionFactory()) {
             factory.inTransaction(session -> {
-                var group1 = new Group();
-                group1.setName("Hibernate Core");
-                session.persist(group1);
-
-                var group2 = new Group();
-                group2.setName("Spring Framework");
-                session.persist(group2);
-
-                var account1 = new Account();
-                account1.setName("Ân");
-                account1.setEmail("an@gmail.com");
-                session.persist(account1);
-
-                var account2 = new Account();
-                account2.setName("Uyn");
-                account2.setEmail("uyn@gmail.com");
-                session.persist(account2);
-
-                account1.setGroups(Arrays.asList(group1, group2));
-                account2.setGroups(Arrays.asList(group1, group2));
-                group1.setAccounts(Arrays.asList(account1, account2));
-                group2.setAccounts(Arrays.asList(account1, account2));
-
-                session.persist(group1);
-                session.persist(group2);
+                var circle = new Circle();
             });
 
             factory.inSession(session -> {
