@@ -22,8 +22,8 @@ public class Program {
                 session.persist(account1);
 
                 var account2 = new Account();
-                account2.setName("Vi");
-                account2.setEmail("vi@gmail.com");
+                account2.setName("Uyn");
+                account2.setEmail("uyn@gmail.com");
                 session.persist(account2);
 
                 account1.setGroups(Arrays.asList(group1, group2));
