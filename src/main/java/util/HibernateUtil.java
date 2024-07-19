@@ -1,9 +1,12 @@
 package util;
 
 import entity.Account;
+import entity.Circle;
 import entity.Department;
 import entity.Group;
 import entity.GroupAccount;
+import entity.Rectangle;
+import entity.Shape;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AvailableSettings;
 import org.hibernate.cfg.Configuration;
