@@ -12,11 +12,13 @@ public class DepartmentTypeConverter
 
     @Override
     public Department.Type convertToEntityAttribute(Character code) {
-        if (code == 'D'){
+        if (code == 'D') {
             return Department.Type.DEVELOPER;
-        }if (code == 'T'){
+        }
+        if (code == 'T') {
             return Department.Type.TESTER;
-        }if (code == 'S'){
+        }
+        if (code == 'S') {
             return Department.Type.SCRUM_MASTER;
         }
         return Department.Type.PROJECT_MANAGER;
