@@ -11,7 +11,7 @@ public class DepartmentIdGenerator implements IdentifierGenerator {
     ) {
         String hql = "SELECT COUNT(*) FROM Department";
         long count = session
-                .createSelectionQuery(hql, long.class)
+                .createSelectionQuery(hql, Long.class)
                 .uniqueResult();
         return String.format("VA%06d", count + 1);
     }
