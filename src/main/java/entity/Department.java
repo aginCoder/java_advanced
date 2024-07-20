@@ -58,7 +58,6 @@ public class Department {
         System.out.println("Sau khi thêm vào database");
     }
 
-
     public enum Type {
         DEVELOPER, TESTER, SCRUM_MASTER, PROJECT_MANAGER
     }

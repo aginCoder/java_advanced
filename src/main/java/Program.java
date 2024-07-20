@@ -1,47 +1,86 @@
+import dto.DepartmentDto;
 import entity.Department;
-import jakarta.persistence.criteria.CriteriaBuilder;
-import jakarta.persistence.criteria.CriteriaQuery;
-import jakarta.persistence.criteria.Expression;
-import jakarta.persistence.criteria.Root;
 import util.HibernateUtil;
 
 public class Program {
     public static void main(String[] args) {
         try (var factory = HibernateUtil.buildSessionFactory()) {
             factory.inTransaction(session -> {
-                var sql = "INSERT INTO department(id, name, type, created_at, updated_at)" +
-                        " VALUES ('VA000001', :name, :type, NOW(), NOW())";
-                var result = session.createNativeMutationQuery(sql)
-                        .setParameter("name", "Kỹ thuật")
-                        .setParameter("type", 'D')
+                var department = new Department();
+                department.setName("Giám đốc");
+                department.setType(Department.Type.PROJECT_MANAGER);
+                session.persist(department);
+            });
+
+            factory.inTransaction(session -> {
+                var department = new Department();
+                department.setName("Bảo vệ");
+                department.setType(Department.Type.TESTER);
+                session.persist(department);
+            });
+
+            factory.inSession(session -> {
+                var hql = "FROM Department";
+                var departments = session
+                        .createSelectionQuery(hql, Department.class)
+                        .getResultList();
+                for (var department : departments) {
+                    System.out.println("1️⃣ department id = " + department.getId());
+                    System.out.println("1️⃣ department name = " + department.getName());
+                }
+            });
+
+            factory.inSession(session -> {
+                // var hql = "FROM Department WHERE id = ?1";
+                var hql = "FROM Department WHERE id = :id";
+                var department = session
+                        .createSelectionQuery(hql, Department.class)
+                        // .setParameter(1, "VA000001")
+                        .setParameter("id", "VA000001")
+                        .uniqueResult();
+                System.out.println("2️⃣ department id = " + department.getId());
+                System.out.println("2️⃣ department name = " + department.getName());
+            });
+
+            factory.inSession(session -> {
+                var hql = "SELECT COUNT(*) FROM Department";
+                var count = session
+                        .createSelectionQuery(hql, Long.class)
+                        .uniqueResult();
+                System.out.println("3️⃣ count = " + count);
+            });
+
+            factory.inSession(session -> {
+                var hql = "SELECT new DepartmentDto(name) FROM Department";
+                var departments = session
+                        .createSelectionQuery(hql, DepartmentDto.class)
+                        .getResultList();
+                for (var department : departments) {
+                    System.out.println("4️⃣ department name = " + department.getName());
+                }
+            });
+
+            factory.inSession(session -> {
+                var page = 2;
+                var size = 1;
+                var hql = "FROM Department";
+                var departments = session
+                        .createSelectionQuery(hql, Department.class)
+                        .setMaxResults(size)
+                        .setFirstResult((page - 1) * size)
+                        .getResultList();
+                for (var department : departments) {
+                    System.out.println("1️⃣ department id = " + department.getId());
+                    System.out.println("1️⃣ department name = " + department.getName());
+                }
+            });
+
+            factory.inTransaction(session -> {
+                var hql = "DELETE FROM Department WHERE id = :id";
+                var result = session.createMutationQuery(hql)
+                        .setParameter("id", "VA000001")
                         .executeUpdate();
-                System.out.println("1️⃣ Thêm thành công: " + result);
-            });
-
-            factory.inSession(session -> {
-                var sql = "SELECT * FROM department";
-                var departments = session
-                        .createNativeQuery(sql, Department.class)
-                        .getResultList();
-                for (var department : departments) {
-                    System.out.println("2️⃣ department id = " + department.getId());
-                    System.out.println("2️⃣ department name = " + department.getName());
-                }
-            });
-
-            factory.inSession(session -> {
-                CriteriaBuilder builder = session.getCriteriaBuilder();
-                CriteriaQuery<Department> query = builder.createQuery(Department.class);
-                Root<Department> root = query.from(Department.class);
-                Expression<Boolean> expression = builder.equal(root.get("name"), "Kỹ thuật");
-                query.select(root).where(expression);
-                var departments = session
-                        .createSelectionQuery(query)
-                        .getResultList();
-                for (var department : departments) {
-                    System.out.println("3️⃣ department id = " + department.getId());
-                    System.out.println("3️⃣ department name = " + department.getName());
-                }
+                System.out.println("Xóa thành công: " + result);
             });
         }
     }
