@@ -16,4 +16,5 @@ public class Shape {
 
     @Column(name = "color", length = 50, nullable = false)
     private String color;
+
 }
