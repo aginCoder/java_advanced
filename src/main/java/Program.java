@@ -1,8 +1,7 @@
-import entity.Account;
-import entity.Group;
+import entity.Circle;
+import entity.Rectangle;
+import entity.Shape;
 import util.HibernateUtil;
-
-import java.util.Arrays;
 
 public class Program {
     public static void main(String[] args) {
@@ -21,12 +20,13 @@ public class Program {
             });
 
             factory.inSession(session -> {
-                var hql = "FROM Shape";
+                var hql = "FROM Circle";
                 var shapes = session
-                        .createSelectionQuery(hql, Shape.class)
+                        .createSelectionQuery(hql, Circle.class)
                         .getResultList();
                 for (var shape : shapes) {
                     System.out.println("👉 shape = " + shape.getColor());
+                    System.out.println("✨ shape = " + shape.getRadius());
                 }
             });
         }

@@ -10,11 +10,10 @@ import lombok.Setter;
 @Setter
 @Entity
 @DiscriminatorValue("rectangle")
-public class Rectangle extends Shape{
+public class Rectangle extends Shape {
     @Column(name = "width")
     private int width;
 
     @Column(name = "height")
     private int height;
-
 }

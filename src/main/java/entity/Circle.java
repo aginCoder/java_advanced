@@ -10,7 +10,7 @@ import lombok.Setter;
 @Setter
 @Entity
 @DiscriminatorValue("circle")
-public class Circle extends Shape{
+public class Circle extends Shape {
     @Column(name = "radius")
     private int radius;
 }
